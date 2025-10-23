@@ -11,9 +11,18 @@ const { NotImplementedError } = require('../lib');
  * getSeason(new Date(2020, 02, 31)) => 'spring'
  *
  */
-function getSeason(/* date */) {
-  // Remove line below and write your code here
-  throw new NotImplementedError('Not implemented');
+function getSeason(date) {
+  if (!date || !(date instanceof Date)) return 'Unable to determine the time of year!';
+
+  if (isNaN(date)) throw new Error('Invalid date!');
+
+  const month = date.getMonth() + 1;
+
+  if (month === 12 || month <= 2) return 'winter';
+  if (month >= 3 && month <= 5) return 'spring';
+  if (month >= 6 && month <= 8) return 'summer';
+  if (month >= 9 && month <= 11) return 'autumn';
+  return 'unknown';
 }
 
 module.exports = {
