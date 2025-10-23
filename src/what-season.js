@@ -12,9 +12,9 @@ const { NotImplementedError } = require('../lib');
  *
  */
 function getSeason(date) {
-  if (!date || !(date instanceof Date)) return 'Unable to determine the time of year!';
+  if (!date) return 'Unable to determine the time of year!';
 
-  if (isNaN(date)) throw new Error('Invalid date!');
+  if (!(date instanceof Date)) throw new Error('Invalid date!');
 
   const month = date.getMonth() + 1;
 
